@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  server: 'http://localhost:8080/api',
+  // server: "https://devs-myfuel-api.herokuapp.com/api",
+  db: 'http://localhost:3000',
+  pagination_length: 20,
+  clienteId: 'devFuelWeb',
+  clienteSecret: '@J95n4s75jh52A',
+  obterTokenUrl: '/oauth/token'
 };
 
 /*
