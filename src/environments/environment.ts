@@ -9,8 +9,7 @@ export const environment = {
   db: 'http://localhost:3000',
   pagination_length: 20,
   clienteId: 'devFuelWeb',
-  clienteSecret: '@J95n4s75jh52A',
-  obterTokenUrl: '/oauth/token'
+  clienteSecret: '@J95n4s75jh52A'
 };
 
 /*

@@ -31,12 +31,12 @@ export class LoginFormComponent implements OnInit {
   submit() {
     const formValues = this.formulario.value;
     const login: Login = new Login(formValues.username, formValues.password);
+
     this.auth.logar(login)
       .subscribe(response => {
         console.log("RESPOSTA", response);
 
       })
-
 
   }
 

@@ -7,6 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
+import { HeaderFactoryLoginService } from '../core/http/header-factory-login.service';
+import { HttpParameterLoginBuilderService } from './http-parameter-login-builder.service';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { SegurancaRoutingModule } from './seguranca-routing.module';
 
@@ -23,6 +25,7 @@ import { SegurancaRoutingModule } from './seguranca-routing.module';
     MatIconModule,
     HttpClientModule,
     ReactiveFormsModule
-  ]
+  ],
+  providers: [HttpParameterLoginBuilderService, HeaderFactoryLoginService]
 })
 export class SegurancaModule { }
