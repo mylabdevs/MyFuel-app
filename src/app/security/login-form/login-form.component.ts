@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../auth.service';
 import { Login } from './login';
 
@@ -14,7 +15,8 @@ export class LoginFormComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private auth: AuthService
+    private auth: AuthService,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -35,8 +37,19 @@ export class LoginFormComponent implements OnInit {
     this.auth.logar(login)
       .subscribe(response => {
         console.log("RESPOSTA", response);
+        const access_token = response.access_token;
+        console.log(access_token)
+        this.auth.storeToken(access_token);
+      },
 
-      })
+        err => {
+          if (err.error.error == 'invalid_grant') {
+            this.toastr.error("usuário e/ou senha inválida")
+          } else {
+            this.toastr.error("Falha no servidor")
+          }
+
+        })
 
   }
 

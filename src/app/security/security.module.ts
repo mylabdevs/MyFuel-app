@@ -28,6 +28,6 @@ import { SecurityRoutingModule } from './security-routing.module';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [HttpParameterLoginBuilderService, HttpParameterRegisterUserBuilderService, HeaderFactorySecurityService,]
+  providers: [HttpParameterLoginBuilderService, HttpParameterRegisterUserBuilderService, HeaderFactorySecurityService]
 })
 export class SecurityModule { }

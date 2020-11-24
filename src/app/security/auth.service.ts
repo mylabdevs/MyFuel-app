@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 import { HttpParameterLoginBuilderService } from './http-parameter-login-builder.service';
 import { Login } from './login-form/login';
@@ -8,6 +9,10 @@ import { Login } from './login-form/login';
   providedIn: 'root'
 })
 export class AuthService {
+
+  jwtPayload: any;
+
+  jwtHelper: JwtHelperService = new JwtHelperService();
 
   constructor(
     private http: HttpClient,
@@ -18,5 +23,23 @@ export class AuthService {
     const { url, body, header } = this.httpParameter.construirHttpParametrosLogin(login);
 
     return this.http.post(url, body, header);
+  }
+
+  storeToken(token: string) {
+    this.jwtPayload = this.jwtHelper.decodeToken(token);
+    localStorage.setItem('access-token', token);
+  }
+
+  getToken() {
+    const token = localStorage.getItem('access-token');
+
+    if (token) {
+      this.storeToken(token);
+    }
+  }
+
+  cleanAccessToken() {
+    localStorage.removeItem('access-token');
+    this.jwtPayload = null;
   }
 }
