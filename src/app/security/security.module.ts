@@ -7,17 +7,19 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
-import { HeaderFactoryLoginService } from '../core/http/header-factory-login.service';
+import { HeaderFactorySecurityService } from '../core/http/header-factory-security.service';
 import { HttpParameterLoginBuilderService } from './http-parameter-login-builder.service';
+import { HttpParameterRegisterUserBuilderService } from './http-parameter-register-user-builder.service';
 import { LoginFormComponent } from './login-form/login-form.component';
-import { SegurancaRoutingModule } from './seguranca-routing.module';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { SecurityRoutingModule } from './security-routing.module';
 
 
 @NgModule({
-  declarations: [LoginFormComponent],
+  declarations: [LoginFormComponent, RegisterUserComponent],
   imports: [
     BrowserModule,
-    SegurancaRoutingModule,
+    SecurityRoutingModule,
     FlexLayoutModule,
     MatCardModule,
     MatInputModule,
@@ -26,6 +28,6 @@ import { SegurancaRoutingModule } from './seguranca-routing.module';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [HttpParameterLoginBuilderService, HeaderFactoryLoginService]
+  providers: [HttpParameterLoginBuilderService, HttpParameterRegisterUserBuilderService, HeaderFactorySecurityService,]
 })
-export class SegurancaModule { }
+export class SecurityModule { }

@@ -1,3 +1,4 @@
 export enum RotaApi {
-    TOKEN = 'oauth/token'
+    TOKEN = 'oauth/token',
+    USERS = 'users'
 }

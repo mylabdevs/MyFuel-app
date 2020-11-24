@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { HeaderFactoryLoginService } from '../core/http/header-factory-login.service';
+import { HeaderFactorySecurityService } from '../core/http/header-factory-security.service';
 import HttpParametros from '../core/http/http-prametros';
 import { RotaApi } from '../core/http/rota-api';
-import { Login } from './login-form/login';
+import { RegisterUser } from '../model/register-user';
 
 @Injectable()
-export class HttpParameterLoginBuilderService {
+export class HttpParameterRegisterUserBuilderService {
 
   private readonly URL: string;
   private readonly ROTA: string;
 
   constructor(
-    private headers: HeaderFactoryLoginService
+    private headers: HeaderFactorySecurityService
   ) {
     this.URL = environment.server;
-    this.ROTA = RotaApi.TOKEN;
+    this.ROTA = RotaApi.USERS;
   }
 
-  construirHttpParametrosLogin(login: Login) {
-    const header = this.headers.construirHeaderLogin();
+  construirHttpParametrosRegisterUser(user: RegisterUser): { url: any; body: any; header: any; } {
+    const header = this.headers.construirHeaderRegisterUser();
 
-    const params = this.headers.construirHttpParamsLogin(login);
+    const body = JSON.stringify(user);
 
     const httpParametros: HttpParametros = HttpParametros.builder()
       .comEndereco(this.URL)
       .comPathParameter(this.ROTA)
-      .comBody(params)
+      .comBody(body)
       .comHeader(header)
       .build();
 
     return httpParametros;
+
   }
 }
