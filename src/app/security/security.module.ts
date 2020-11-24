@@ -7,6 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from '../app-routing.module';
 import { HeaderFactorySecurityService } from '../core/http/header-factory-security.service';
 import { HttpParameterLoginBuilderService } from './http-parameter-login-builder.service';
 import { HttpParameterRegisterUserBuilderService } from './http-parameter-register-user-builder.service';
@@ -20,6 +21,7 @@ import { SecurityRoutingModule } from './security-routing.module';
   imports: [
     BrowserModule,
     SecurityRoutingModule,
+    AppRoutingModule,
     FlexLayoutModule,
     MatCardModule,
     MatInputModule,

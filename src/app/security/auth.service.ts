@@ -33,9 +33,16 @@ export class AuthService {
   getToken() {
     const token = localStorage.getItem('access-token');
 
+    return token ? token : null;
+  }
+
+  isAuthenticated(): boolean {
+    const token = this.getToken();
     if (token) {
-      this.storeToken(token);
+      const expired = this.jwtHelper.isTokenExpired(token);
+      return !expired;
     }
+    return false;
   }
 
   cleanAccessToken() {

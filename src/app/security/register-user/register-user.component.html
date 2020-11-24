@@ -2,7 +2,6 @@
     <mat-card class="box">
         <mat-card-header>
             <mat-card-title color="primary">
-                <mat-icon>account_circle</mat-icon>
                 Novo usuário
             </mat-card-title>
         </mat-card-header>
@@ -48,6 +47,11 @@
             </button>
             <!-- <button type="submit" mat-stroked-button color="primary" class="btn-block">Login</button> -->
         </form>
+
+        <mat-card-actions class="mt-15">
+            <button mat-button [routerLink]="['/login']" routerLinkActive="router-link-active">Cancelar</button>
+
+        </mat-card-actions>
     </mat-card>
 
 </div>
