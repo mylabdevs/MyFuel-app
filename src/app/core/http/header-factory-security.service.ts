@@ -35,4 +35,12 @@ export class HeaderFactorySecurityService {
       .set('grant_type', 'password').toString();
   }
 
+  construirHeaderLogout(token: string) {
+    const headers = {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    }
+    return { headers, withCredentials: true }
+  }
+
 }

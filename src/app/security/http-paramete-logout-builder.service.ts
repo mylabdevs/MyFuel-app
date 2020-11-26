@@ -3,10 +3,9 @@ import { environment } from '../../environments/environment';
 import { HeaderFactorySecurityService } from '../core/http/header-factory-security.service';
 import HttpParametros from '../core/http/http-prametros';
 import { RotaApi } from '../core/http/rota-api';
-import { Login } from './login-form/login';
 
 @Injectable()
-export class HttpParameterLoginBuilderService {
+export class HttpParameterLogoutBuilderService {
   private readonly URL: string;
   private readonly ROTA: string;
 
@@ -14,17 +13,15 @@ export class HttpParameterLoginBuilderService {
     private headers: HeaderFactorySecurityService
   ) {
     this.URL = environment.server;
-    this.ROTA = RotaApi.TOKEN;
+    this.ROTA = RotaApi.LOGOUT;
   }
 
-  construirHttpParametrosLogin(login: Login) {
-    const header = this.headers.construirHeaderLogin();
-    const params = this.headers.construirHttpParamsLogin(login);
+  construirHttpParametrosLogout(token: string) {
+    const header = this.headers.construirHeaderLogout(token);
 
     const httpParametros: HttpParametros = HttpParametros.builder()
       .comEndereco(this.URL)
       .comPathParameter(this.ROTA)
-      .comBody(params)
       .comHeader(header)
       .build();
 

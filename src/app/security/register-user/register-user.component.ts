@@ -59,7 +59,7 @@ export class RegisterUserComponent implements OnInit {
             .success('Usuário cadastrado com sucesso', 'Sucesso')
             .onHidden
             .subscribe(() => {
-              this.router.navigate(['login']);
+              this.router.navigate(['/login']);
             })
         },
         err => {

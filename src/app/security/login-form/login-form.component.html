@@ -11,10 +11,15 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input type="password" matInput placeholder="Password" formControlName="password">
+                    <input type="password" matInput placeholder="Password" formControlName="password"
+                        [type]="passwordVisible ? 'text' : 'password'">
+                    <mat-icon class="pointer" matSuffix (click)="passwordVisible = !passwordVisible">
+                        {{!passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </mat-form-field>
             </mat-card-content>
-            <button type="submit" mat-stroked-button color="primary" class="btn-block">Login</button>
+            <button type="submit" mat-stroked-button color="primary" class="btn-block">
+                <mat-icon>login</mat-icon> Login
+            </button>
         </form>
         <mat-card-actions class="mt-5">
             <strong>Não possui cadastro?</strong> <button mat-button [routerLink]="['/register']"

@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { AuthService } from '../security/auth.service';
+import { LogoutService } from '../security/logout.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,15 +11,22 @@ import { MatSidenav } from '@angular/material/sidenav';
 })
 export class LayoutComponent implements OnInit {
 
+  user: string = '';
+
   @ViewChild('sidenav') sidenav: MatSidenav;
   isExpanded = true;
   showSubmenu: boolean = false;
   isShowing = false;
   showSubSubMenu: boolean = false;
 
-  constructor() { }
+  constructor(
+    private auth: AuthService,
+    private logoutService: LogoutService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    this.user = this.auth.getUserAuthenticated();
   }
 
   mouseenter() {
@@ -29,6 +39,13 @@ export class LayoutComponent implements OnInit {
     if (!this.isExpanded) {
       this.isShowing = false;
     }
+  }
+
+  logout() {
+    this.logoutService.logout()
+      .then(() => {
+        this.router.navigate(['/login']);
+      })
   }
 
 }

@@ -31,3 +31,19 @@
   .submenu.expanded {
     transform: scaleY(1);
   }
+
+  .example-toolbar {
+    justify-content: space-between;
+  }
+
+  .pr-1 {
+    padding-right: 1rem;
+  }
+
+  .mr-1 {
+    margin-right: 1rem;
+  }
+
+  .example-spacer {
+    flex: 1 1 auto;
+  }

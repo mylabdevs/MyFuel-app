@@ -40,8 +40,10 @@
             <button mat-stroked-button color="primary" class="btn-block" type="submit"
                 [disabled]="registerUserForm.invalid">
                 <div>
-                    <span *ngIf="!isLoading">Registrar-se</span>
-                    <mat-spinner [diameter]="36" *ngIf="isLoading">
+                    <span *ngIf="!isLoading">
+                        <mat-icon>save_alt</mat-icon> Registrar-se
+                    </span>
+                    <mat-spinner [diameter]="30" *ngIf="isLoading">
                     </mat-spinner>
                 </div>
             </button>

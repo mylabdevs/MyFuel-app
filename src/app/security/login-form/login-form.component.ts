@@ -14,6 +14,8 @@ export class LoginFormComponent implements OnInit {
 
   formulario: FormGroup;
 
+  passwordVisible: boolean;
+
   constructor(
     private fb: FormBuilder,
     private auth: AuthService,
@@ -22,7 +24,8 @@ export class LoginFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.montarFormulario()
+    this.montarFormulario();
+    this.passwordVisible = false;
   }
 
   montarFormulario() {
@@ -38,8 +41,7 @@ export class LoginFormComponent implements OnInit {
 
     this.auth.logar(login)
       .subscribe(response => {
-        const access_token = response.access_token;
-        console.log(access_token)
+        const access_token = JSON.stringify(response);
         this.auth.storeToken(access_token);
         this.router.navigate(['/']);
       },

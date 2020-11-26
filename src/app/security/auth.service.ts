@@ -24,16 +24,16 @@ export class AuthService {
 
     return this.http.post(url, body, header);
   }
-
-  storeToken(token: string) {
-    this.jwtPayload = this.jwtHelper.decodeToken(token);
+  storeToken(token: any) {
     localStorage.setItem('access-token', token);
   }
 
   getToken() {
-    const token = localStorage.getItem('access-token');
+    const token = JSON.parse(localStorage.getItem('access-token'));
 
-    return token ? token : null;
+    this.jwtPayload = token ? this.jwtHelper.decodeToken(token.access_token) : null;
+
+    return token ? token.access_token : null;
   }
 
   isAuthenticated(): boolean {
@@ -48,5 +48,15 @@ export class AuthService {
   cleanAccessToken() {
     localStorage.removeItem('access-token');
     this.jwtPayload = null;
+  }
+
+  getUserAuthenticated(): string {
+    const token = JSON.parse(localStorage.getItem('access-token'));
+
+    if (token) {
+      const usuario = token.nome;
+      return usuario;
+    }
+    return null;
   }
 }

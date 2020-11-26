@@ -2,9 +2,17 @@
     <button mat-icon-button (click)="isExpanded = !isExpanded">
         <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="example-app-name">Meu Combustível</h1>
+    <span>Meu Combustível</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        {{user}} <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>power_settings_new</mat-icon> Logout
+        </button>
+    </mat-menu>
 </mat-toolbar>
-
 <mat-sidenav-container class="example-container" autosize>
 
     <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
