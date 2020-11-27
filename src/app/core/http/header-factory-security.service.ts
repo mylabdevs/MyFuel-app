@@ -43,4 +43,9 @@ export class HeaderFactorySecurityService {
     return { headers, withCredentials: true }
   }
 
+  construirHttpParamsNewAccessToken() {
+    return new HttpParams()
+      .set('grant_type', 'refresh_token').toString();
+  }
+
 }

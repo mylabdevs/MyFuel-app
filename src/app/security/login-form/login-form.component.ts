@@ -41,8 +41,7 @@ export class LoginFormComponent implements OnInit {
 
     this.auth.logar(login)
       .subscribe(response => {
-        const access_token = JSON.stringify(response);
-        this.auth.storeToken(access_token);
+        this.auth.storeToken(response);
         this.router.navigate(['/']);
       },
 

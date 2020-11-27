@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { HeaderFactorySecurityService } from '../core/http/header-factory-security.service';
+import { AuthHttpInterceptorService } from './auth-http-interceptor.service';
 import { HttpParameterLogoutBuilderService } from './http-paramete-logout-builder.service';
 import { HttpParameterLoginBuilderService } from './http-parameter-login-builder.service';
 import { HttpParameterRegisterUserBuilderService } from './http-parameter-register-user-builder.service';
@@ -38,7 +39,12 @@ import { SecurityRoutingModule } from './security-routing.module';
     HttpParameterRegisterUserBuilderService,
     HeaderFactorySecurityService,
     HttpParameterLogoutBuilderService,
-    LogoutService
+    LogoutService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptorService,
+      multi: true
+    }
   ]
 })
 export class SecurityModule { }

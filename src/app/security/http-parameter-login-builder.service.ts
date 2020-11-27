@@ -19,12 +19,26 @@ export class HttpParameterLoginBuilderService {
 
   construirHttpParametrosLogin(login: Login) {
     const header = this.headers.construirHeaderLogin();
-    const params = this.headers.construirHttpParamsLogin(login);
+    const body = this.headers.construirHttpParamsLogin(login);
 
     const httpParametros: HttpParametros = HttpParametros.builder()
       .comEndereco(this.URL)
       .comPathParameter(this.ROTA)
-      .comBody(params)
+      .comBody(body)
+      .comHeader(header)
+      .build();
+
+    return httpParametros;
+  }
+
+  construirHttpParametrosNewAccessToken() {
+    const header = this.headers.construirHeaderLogin();
+    const body = this.headers.construirHttpParamsNewAccessToken();
+
+    const httpParametros: HttpParametros = HttpParametros.builder()
+      .comEndereco(this.URL)
+      .comPathParameter(this.ROTA)
+      .comBody(body)
       .comHeader(header)
       .build();
 

@@ -24,8 +24,10 @@ export class AuthService {
 
     return this.http.post(url, body, header);
   }
+
   storeToken(token: any) {
-    localStorage.setItem('access-token', token);
+    const access_token = JSON.stringify(token);
+    localStorage.setItem('access-token', access_token);
   }
 
   getToken() {
@@ -59,4 +61,28 @@ export class AuthService {
     }
     return null;
   }
+
+  getNewAccessToken() {
+    const { url, body, header } = this.httpParameter.construirHttpParametrosNewAccessToken();
+
+    return this.http.post(url, body, header)
+      .toPromise()
+      .then(response => {
+        this.storeToken(response);
+        console.log('Novo access token criado!');
+
+        return Promise.resolve(null);
+      }).catch(response => {
+        console.error('Erro ao renovar token.', response);
+        return Promise.resolve(null);
+      });;
+
+  }
+
+  isAccessTokenInvalido() {
+    const token = JSON.parse(localStorage.getItem('access-token'));
+
+    return !token || this.jwtHelper.isTokenExpired(token.access_token);
+  }
+
 }
