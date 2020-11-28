@@ -12,7 +12,7 @@ export class HeaderFactoryService {
     this.token = auth.getToken();
   }
 
-  construirHeaderCreateVehicle() {
+  construirHeaderVehicle() {
     const headers = {
       'Authorization': `Bearer ${this.token}`,
       'Content-Type': 'application/json'

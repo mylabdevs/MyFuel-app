@@ -1,10 +1,18 @@
 <mat-card>
     <mat-tab-group>
-        <mat-tab label="Lista">
-            <app-vehicle-list></app-vehicle-list>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>list</mat-icon>
+                <span class="ml-5">Todos</span>
+            </ng-template>
+            <app-vehicle-list [vehicles]="vehicles" (removeVehicle)="removeVehicle($event)"></app-vehicle-list>
         </mat-tab>
-        <mat-tab label="Cadastro">
-            <app-vehicle-form></app-vehicle-form>
+        <mat-tab>
+            <ng-template mat-tab-label>
+                <mat-icon>directions_car</mat-icon>
+                <span class="ml-5">Novo</span>
+            </ng-template>
+            <app-vehicle-form (updateVehicleList)="listVehicles()"></app-vehicle-form>
         </mat-tab>
     </mat-tab-group>
 </mat-card>

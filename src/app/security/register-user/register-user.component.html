@@ -18,27 +18,23 @@
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <input id="userPassword" matInput [type]="passwordVisible ? 'text' : 'password'" placeholder="Senha"
-                        formControlName="password">
+                    <input id="userPassword" matInput [type]="passwordVisible ? 'text' : 'password'" placeholder="Senha" formControlName="password">
                     <mat-icon class="pointer" matSuffix (click)="passwordVisible = !passwordVisible">
                         {{!passwordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
                     <mat-hint *ngIf="registerUserForm.get('password').invalid">Insira sua senha com 6 a 12 caracteres.
                     </mat-hint>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <input id="userConfirmPassword" matInput [type]="confirmPasswordVisible ? 'text' : 'password'"
-                        placeholder="Confirmar senha" formControlName="confirmPassword">
+                    <input id="userConfirmPassword" matInput [type]="confirmPasswordVisible ? 'text' : 'password'" placeholder="Confirmar senha" formControlName="confirmPassword">
                     <mat-icon class="pointer" matSuffix (click)="confirmPasswordVisible = !confirmPasswordVisible">
                         {{!confirmPasswordVisible ? 'visibility_off' : 'visibility'}}</mat-icon>
-                    <mat-hint
-                        *ngIf="registerUserForm.get('confirmPassword').invalid || registerUserForm.errors?.confirmPassword">
+                    <mat-hint *ngIf="registerUserForm.get('confirmPassword').invalid || registerUserForm.errors?.confirmPassword">
                         Repita sua senha.
                     </mat-hint>
                 </mat-form-field>
 
             </mat-card-content>
-            <button mat-stroked-button color="primary" class="btn-block" type="submit"
-                [disabled]="registerUserForm.invalid">
+            <button mat-stroked-button color="primary" class="btn-block" type="submit" [disabled]="registerUserForm.invalid">
                 <div>
                     <span *ngIf="!isLoading">
                         <mat-icon>save_alt</mat-icon> Registrar-se
@@ -47,7 +43,6 @@
                     </mat-spinner>
                 </div>
             </button>
-            <!-- <button type="submit" mat-stroked-button color="primary" class="btn-block">Login</button> -->
         </form>
 
         <mat-card-actions class="mt-15">

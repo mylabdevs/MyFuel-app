@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -17,6 +17,7 @@ export class VehicleFormComponent implements OnInit {
   form: FormGroup;
   isLoading: boolean;
   vehicle: Vehicle;
+  @Output() updateVehicleList = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,19 +56,31 @@ export class VehicleFormComponent implements OnInit {
     this.vehicleService
       .save(this.vehicle)
       .subscribe(response => {
-        console.log(response)
-        this.isLoading = false;
+
         this.toastr
           .success('Veículo cadastrado com sucesso', 'Sucesso')
           .onHidden
           .subscribe(() => {
-            this.router.navigate(['vehicle']);
-            this.form.reset();
+            console.log("JAIRO 2");
+            this.updateVehicleList.emit("");
+            this.isLoading = false;
+            this.resetForm(this.form);
+
           })
       }, err => {
         this.isLoading = false;
         this.errorHandler.showErrors(err);
+        this.form.reset();
       });
 
+  }
+
+  resetForm(form: FormGroup) {
+
+    form.reset();
+
+    Object.keys(form.controls).forEach(key => {
+      form.get(key).setErrors(null);
+    });
   }
 }

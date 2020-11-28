@@ -72,6 +72,12 @@ body {
     width: 100%;
 }
 
+.btn-block {
+    display: inline;
+    text-align: center;
+    padding: 10px;
+}
+
 .example-md-width {
     width: 30%;
 }
@@ -116,4 +122,8 @@ body {
 
 .p-20 {
     padding: 20px;
+}
+
+.ml-5 {
+    margin-left: 5px;
 }

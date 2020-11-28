@@ -31,11 +31,14 @@
                 <mat-hint *ngIf="form.get('placa').invalid">Insira a placa do veículo.</mat-hint>
             </mat-form-field>
         </mat-card-content>
-        <button id="submitButton" mat-raised-button color="primary" class="buttonDefault primary-button" type="submit" [disabled]="form.invalid">
-            <div>
-                <span *ngIf="!isLoading">Cadastrar</span>
-                <mat-spinner [diameter]="36" *ngIf="isLoading"></mat-spinner>
-            </div>
-        </button>
+        <button *ngIf="!isLoading; else loading" mat-stroked-button color="primary" class="btn-block" type="submit" [disabled]="form.invalid">
+            <mat-icon>save_alt</mat-icon> Cadastrar
+          </button>
+        <ng-template #loading>
+            <button mat-stroked-button color="primary" class="btn-block">
+              <mat-icon><mat-spinner color="primary" diameter="20"></mat-spinner></mat-icon>
+                Aguarde ...
+            </button>
+        </ng-template>
     </form>
 </mat-card>

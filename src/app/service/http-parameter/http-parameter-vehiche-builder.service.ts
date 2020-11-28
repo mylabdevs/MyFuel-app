@@ -20,7 +20,7 @@ export class HttpParameterVehicheBuilderService {
 
   createParameterSaveVehicle(vehiche: Vehicle) {
 
-    const header = this.headers.construirHeaderCreateVehicle();
+    const header = this.headers.construirHeaderVehicle();
 
     const body = JSON.stringify(vehiche);
 
@@ -28,6 +28,32 @@ export class HttpParameterVehicheBuilderService {
       .comEndereco(this.URL)
       .comPathParameter(this.ROTA)
       .comBody(body)
+      .comHeader(header)
+      .build();
+
+    return httpParametros;
+  }
+
+  createParameterFindByUserVehicle(id: number) {
+    const path = this.ROTA + '/' + RotaApi.USER + '/' + id;
+    const header = this.headers.construirHeaderVehicle();
+
+    const httpParametros: HttpParametros = HttpParametros.builder()
+      .comEndereco(this.URL)
+      .comPathParameter(path)
+      .comHeader(header)
+      .build();
+
+    return httpParametros;
+
+  }
+
+  createParameteDeleteVehicle(id: number) {
+    const path = this.ROTA + '/' + id;
+    const header = this.headers.construirHeaderVehicle();
+    const httpParametros: HttpParametros = HttpParametros.builder()
+      .comEndereco(this.URL)
+      .comPathParameter(path)
       .comHeader(header)
       .build();
 
