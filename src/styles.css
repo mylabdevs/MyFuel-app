@@ -72,6 +72,10 @@ body {
     width: 100%;
 }
 
+.example-md-width {
+    width: 30%;
+}
+
 .container-wrapper mat-card-header {
     text-align: center;
     width: 100%;
@@ -108,4 +112,8 @@ body {
 
 .mt-5 {
     margin-top: 5px;
+}
+
+.p-20 {
+    padding: 20px;
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 import { HttpParameterLoginBuilderService } from './http-parameter-login-builder.service';
 import { Login } from './login-form/login';
 
@@ -52,11 +53,15 @@ export class AuthService {
     this.jwtPayload = null;
   }
 
-  getUserAuthenticated(): string {
+  getUserAuthenticated(): User {
     const token = JSON.parse(localStorage.getItem('access-token'));
 
     if (token) {
-      const usuario = token.nome;
+      const usuario: User = {
+        id: token.id,
+        name: token.nome
+      };
+
       return usuario;
     }
     return null;

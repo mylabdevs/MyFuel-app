@@ -5,7 +5,7 @@
     <span>Meu Combustível</span>
     <span class="example-spacer"></span>
     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        {{user}} <mat-icon>more_vert</mat-icon>
+        {{user.name}} <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="logout()">
@@ -15,8 +15,7 @@
 </mat-toolbar>
 <mat-sidenav-container class="example-container" autosize>
 
-    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()"
-        (mouseleave)="mouseleave()">
+    <mat-sidenav #sidenav class="example-sidenav" mode="side" opened="true" (mouseenter)="mouseenter()" (mouseleave)="mouseleave()">
         <mat-nav-list>
             <mat-list-item (click)="showSubmenu = !showSubmenu" class="parent">
                 <span class="full-width" *ngIf="isExpanded || isShowing">Menu</span>
@@ -25,27 +24,17 @@
                     expand_more</mat-icon>
             </mat-list-item>
             <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
-                <a mat-list-item href="#">Submenu Item 1</a>
-                <a mat-list-item href="#">Submenu Item 2</a>
-                <mat-list-item (click)="showSubSubMenu = !showSubSubMenu" class="parent">
-                    <span class="full-width" *ngIf="isExpanded || isShowing">Nested Menu</span>
-                    <mat-icon class="menu-button" [ngClass]="{'rotated' : showSubSubMenu}"
-                        *ngIf="isExpanded || isShowing">expand_more</mat-icon>
-                </mat-list-item>
-                <div class="submenu" [ngClass]="{'expanded' : showSubSubMenu}" *ngIf="isShowing || isExpanded">
-                    <mat-list-item>SubSubmenu Item 1</mat-list-item>
-                    <mat-list-item>SubSubmenu Item 2</mat-list-item>
-                </div>
+                <a mat-list-item href="#" [routerLink]="['/home']" routerLinkActive="router-link-active">Dashboard</a>
+                <a mat-list-item href="#" [routerLink]="['/vehicle']" routerLinkActive="router-link-active">Veiculo</a>
+                <a mat-list-item href="#">Abastecimento</a>
             </div>
         </mat-nav-list>
         <mat-nav-list>
         </mat-nav-list>
     </mat-sidenav>
 
-    <div class="example-sidenav-content">
+    <div fxLayout="column" fxLayoutAlign="start center" class="container-wrapper p-20">
         <router-outlet></router-outlet>
     </div>
-    <mat-toolbar-row>
-        <span>2020 todos direitos reservados</span>
-    </mat-toolbar-row>
+
 </mat-sidenav-container>

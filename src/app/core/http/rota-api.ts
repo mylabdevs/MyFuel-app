@@ -1,5 +1,6 @@
 export enum RotaApi {
     TOKEN = 'oauth/token',
     USERS = 'users',
-    LOGOUT = "token/revoke"
+    LOGOUT = "token/revoke",
+    VEHICLE = "veiculos"
 }

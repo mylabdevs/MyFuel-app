@@ -1,0 +1,41 @@
+<mat-card class="box" class="p-20">
+    <h1>Cadastrar Veículo</h1>
+    <form class="example-form" [formGroup]="form" (ngSubmit)="submit()">
+        <mat-card-content>
+            <mat-form-field class="example-md-width">
+                <input id="vehicleColor" matInput type="color" placeholder="Cor do veículo" formControlName="cor">
+                <mat-hint *ngIf="form.get('cor').invalid">Insira a cor do veículo.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input id="vehicleYear" matInput type="number" placeholder="Ano" formControlName="ano">
+                <mat-hint *ngIf="form.get('ano').invalid">Insira o ano do veículo.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input id="vehicleTank" matInput type="number" placeholder="Capacidade do tanque" formControlName="capacidadeTanque">
+                <mat-hint *ngIf="form.get('capacidadeTanque').invalid">Insira a capacidade do tanque do veículo.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input id="vehicleKm" matInput type="number" placeholder="Quilometragem do carro" formControlName="km">
+                <mat-hint *ngIf="form.get('km').invalid">Insira a quilometragem atual do veículo.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input id="vehicleBrand" matInput type="text" placeholder="Marca" formControlName="marca">
+                <mat-hint *ngIf="form.get('marca').invalid">Insira a marca do fabricante do veículo.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input id="vehicleModel" matInput type="text" placeholder="Modelo" formControlName="modelo">
+                <mat-hint *ngIf="form.get('modelo').invalid">Insira o modelo do veículo.</mat-hint>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <input id="vehicleLicensePlate" matInput type="text" placeholder="Placa" formControlName="placa">
+                <mat-hint *ngIf="form.get('placa').invalid">Insira a placa do veículo.</mat-hint>
+            </mat-form-field>
+        </mat-card-content>
+        <button id="submitButton" mat-raised-button color="primary" class="buttonDefault primary-button" type="submit" [disabled]="form.invalid">
+            <div>
+                <span *ngIf="!isLoading">Cadastrar</span>
+                <mat-spinner [diameter]="36" *ngIf="isLoading"></mat-spinner>
+            </div>
+        </button>
+    </form>
+</mat-card>

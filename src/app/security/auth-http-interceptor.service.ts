@@ -15,10 +15,6 @@ export class AuthHttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log("1", !req.url.includes('/oauth/token'));
-    console.log("2", !req.url.includes('/users'));
-    console.log("3", this.auth.isAccessTokenInvalido());
-
     if (!req.url.endsWith('/oauth/token') && !req.url.endsWith('/users') && this.auth.isAccessTokenInvalido()) {
       return from(this.auth.getNewAccessToken())
         .pipe(

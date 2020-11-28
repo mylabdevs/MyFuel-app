@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
+import { User } from '../model/user';
 import { AuthService } from '../security/auth.service';
 import { LogoutService } from '../security/logout.service';
 
@@ -11,7 +12,7 @@ import { LogoutService } from '../security/logout.service';
 })
 export class LayoutComponent implements OnInit {
 
-  user: string = '';
+  user: User;
 
   @ViewChild('sidenav') sidenav: MatSidenav;
   isExpanded = true;

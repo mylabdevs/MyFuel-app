@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { LayoutComponent } from './layout/layout.component';
+import { VehicleModule } from './pages/vehicle/vehicle.module';
 import { SecurityModule } from './security/security.module';
 
 @NgModule({
@@ -33,7 +34,8 @@ import { SecurityModule } from './security/security.module';
     MatListModule,
     MatMenuModule,
     SecurityModule,
-    ComponentsModule
+    ComponentsModule,
+    VehicleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
