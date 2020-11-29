@@ -4,17 +4,13 @@ import { AuthService } from '../../security/auth.service';
 @Injectable()
 export class HeaderFactoryService {
 
-  token: string;
-
   constructor(
-    auth: AuthService
-  ) {
-    this.token = auth.getToken();
-  }
+    private auth: AuthService
+  ) { }
 
   construirHeaderVehicle() {
     const headers = {
-      'Authorization': `Bearer ${this.token}`,
+      'Authorization': `Bearer ${this.auth.getToken()}`,
       'Content-Type': 'application/json'
     }
     return { headers, withCredentials: true }
