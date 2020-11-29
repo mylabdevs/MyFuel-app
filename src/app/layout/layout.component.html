@@ -26,7 +26,7 @@
             <div class="submenu" [ngClass]="{'expanded' : showSubmenu}" *ngIf="isShowing || isExpanded">
                 <a mat-list-item href="#" [routerLink]="['/home']" routerLinkActive="router-link-active">Dashboard</a>
                 <a mat-list-item href="#" [routerLink]="['/vehicle']" routerLinkActive="router-link-active">Veiculo</a>
-                <a mat-list-item href="#">Abastecimento</a>
+                <a mat-list-item href="#" [routerLink]="['/suply']" routerLinkActive="router-link-active">Abastecimento</a>
             </div>
         </mat-nav-list>
         <mat-nav-list>

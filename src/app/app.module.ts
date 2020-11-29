@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ComponentsModule } from './components/components.module';
 import { LayoutComponent } from './layout/layout.component';
+import { SuplyModule } from './pages/suply/suply.module';
 import { VehicleModule } from './pages/vehicle/vehicle.module';
 import { SecurityModule } from './security/security.module';
 
@@ -35,7 +36,8 @@ import { SecurityModule } from './security/security.module';
     MatMenuModule,
     SecurityModule,
     ComponentsModule,
-    VehicleModule
+    VehicleModule,
+    SuplyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
